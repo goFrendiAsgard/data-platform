@@ -1,0 +1,55 @@
+tasks:
+
+  startTwpMaterializeContainer:
+    icon: 🧪
+    extend: zrbStartDockerContainer
+    location: ../../twpMaterialize
+    inputs:
+      - runTwpMaterializeInLocal
+    dependencies:
+      - buildTwpMaterializeImage
+    configRefs:
+      - twpMaterializeContainer
+      - twpMaterialize
+    envRefs: 
+      - twpMaterialize
+
+  buildTwpMaterializeImage:
+    icon: 🏭
+    extend: zrbBuildDockerImage
+    location: ../../twpMaterialize
+    configRefs:
+      - twpMaterializeContainer
+      - twpMaterialize
+    envRefs: 
+      - twpMaterialize
+
+  pushTwpMaterializeImage:
+    icon: 📤
+    extend: zrbPushDockerImage
+    dependencies:
+      - buildTwpMaterializeImage
+    configRefs:
+      - twpMaterializeContainer
+      - twpMaterialize
+    envRefs: 
+      - twpMaterialize
+
+  stopTwpMaterializeContainer:
+    icon: ✋
+    extend: zrbStopDockerContainer
+    configRefs:
+      - twpMaterializeContainer
+      - twpMaterialize
+    envRefs: 
+      - twpMaterialize
+
+  removeTwpMaterializeContainer:
+    icon: ❌
+    extend: zrbRemoveDockerContainer
+    location: ../../twpMaterialize
+    configRefs:
+      - twpMaterializeContainer
+      - twpMaterialize
+    envRefs: 
+      - twpMaterialize

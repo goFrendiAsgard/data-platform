@@ -5,6 +5,7 @@ includes:
   - ./zaruba-tasks/twpKafka/index.yaml
   - ./zaruba-tasks/twpMysql/index.yaml
   - ./zaruba-tasks/twpFastApp/index.yaml
+  - ./zaruba-tasks/twpMaterialize/index.yaml
 
 tasks:
 
@@ -36,6 +37,7 @@ tasks:
       - startTwpKafka
       - startTwpMysql
       - startTwpFastApp
+      - startTwpMaterialize
 
   stop:
     icon: ✋
@@ -58,6 +60,7 @@ tasks:
       - startTwpKafkaContainer
       - startTwpMysqlContainer
       - startTwpFastAppContainer
+      - startTwpMaterializeContainer
 
   runContainers:
     icon: 🐳
@@ -74,6 +77,7 @@ tasks:
       - stopTwpKafkaContainer
       - stopTwpMysqlContainer
       - stopTwpFastAppContainer
+      - stopTwpMaterializeContainer
 
   removeContainers:
     icon: ❌
@@ -85,6 +89,7 @@ tasks:
       - removeTwpKafkaContainer
       - removeTwpMysqlContainer
       - removeTwpFastAppContainer
+      - removeTwpMaterializeContainer
 
   pullImages:
     icon: 📥
@@ -101,6 +106,7 @@ tasks:
       - pushTwpKafkaImage
       - pushTwpMysqlImage
       - pushTwpFastAppImage
+      - pushTwpMaterializeImage
 
   buildImages:
     icon: 🏭
@@ -112,6 +118,7 @@ tasks:
       - buildTwpKafkaImage
       - buildTwpMysqlImage
       - buildTwpFastAppImage
+      - buildTwpMaterializeImage
 
   prepareDeployments:
     icon: 🔧

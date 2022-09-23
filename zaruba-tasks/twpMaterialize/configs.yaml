@@ -1,0 +1,18 @@
+configs:
+
+  twpMaterialize:
+    runInLocal: '{{ .GetValue "runTwpMaterializeInLocal" }}'
+    ports: |
+      6875:6875
+
+  twpMaterializeContainer:
+    useImagePrefix: true
+    imageName: twp-materialize
+    containerName: twpMaterialize
+    localhost: host.docker.internal
+    afterCheck: sleep 5
+    checkCommand: |
+      echo "check twpMaterialize"
+    command : |
+
+    volumes: |

@@ -1,0 +1,8 @@
+inputs:
+
+  runTwpMaterializeInLocal:
+    default: true
+    options: [true, false]
+    allowCustom: false
+    description: Whether to run twpMaterialize locally
+    prompt: Run twpMaterialize locally?
