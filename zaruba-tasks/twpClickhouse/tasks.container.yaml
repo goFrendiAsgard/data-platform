@@ -1,0 +1,55 @@
+tasks:
+
+  startTwpClickhouseContainer:
+    icon: 🟨
+    extend: zrbStartDockerContainer
+    location: ../../twpClickhouse
+    inputs:
+      - runTwpClickhouseInLocal
+    dependencies:
+      - buildTwpClickhouseImage
+    configRefs:
+      - twpClickhouseContainer
+      - twpClickhouse
+    envRefs: 
+      - twpClickhouse
+
+  buildTwpClickhouseImage:
+    icon: 🏭
+    extend: zrbBuildDockerImage
+    location: ../../twpClickhouse
+    configRefs:
+      - twpClickhouseContainer
+      - twpClickhouse
+    envRefs: 
+      - twpClickhouse
+
+  pushTwpClickhouseImage:
+    icon: 📤
+    extend: zrbPushDockerImage
+    dependencies:
+      - buildTwpClickhouseImage
+    configRefs:
+      - twpClickhouseContainer
+      - twpClickhouse
+    envRefs: 
+      - twpClickhouse
+
+  stopTwpClickhouseContainer:
+    icon: ✋
+    extend: zrbStopDockerContainer
+    configRefs:
+      - twpClickhouseContainer
+      - twpClickhouse
+    envRefs: 
+      - twpClickhouse
+
+  removeTwpClickhouseContainer:
+    icon: ❌
+    extend: zrbRemoveDockerContainer
+    location: ../../twpClickhouse
+    configRefs:
+      - twpClickhouseContainer
+      - twpClickhouse
+    envRefs: 
+      - twpClickhouse

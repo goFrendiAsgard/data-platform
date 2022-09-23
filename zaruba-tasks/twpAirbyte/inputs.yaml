@@ -1,0 +1,8 @@
+inputs:
+
+  runTwpAirbyteInLocal:
+    default: true
+    options: [true, false]
+    allowCustom: false
+    description: Whether to run twpAirbyte locally
+    prompt: Run twpAirbyte locally?

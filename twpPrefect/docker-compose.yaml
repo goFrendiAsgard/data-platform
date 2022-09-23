@@ -1,0 +1,53 @@
+version: "3.7"
+services:
+
+  ### Prefect Database
+  database:
+    build: ./postgres
+    image: ${DOCKER_COMPOSE_IMAGE_NAME:-prefect}-postgres:${DOCKER_COMPOSE_IMAGE_TAG:-latest}
+    # image: postgres:14.1-alpine
+    hostname: postgres
+    container_name: twpPrefectPostgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-orion}
+    volumes:
+      - ${DOCKER_COMPOSE_VOLUME:-./volumes}/postgres:/var/lib/postgresql/data
+
+  ### Prefect Orion API
+  orion:
+    build: ./orion
+    image: ${DOCKER_COMPOSE_IMAGE_NAME:-prefect}-orion:${DOCKER_COMPOSE_IMAGE_TAG:-latest}
+    # image: prefecthq/prefect:2.3.1-python3.10
+    hostname: orion
+    container_name: twpPrefectOrion
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_COMPOSE_VOLUME:-./volumes}/prefect:/root/.prefect
+    entrypoint: ["prefect", "orion", "start"]
+    environment:
+      PREFECT_ORION_UI_API_URL: ${PREFECT_ORION_UI_API_URL:-http://localhost:4200/api}
+      PREFECT_ORION_API_HOST: ${PREFECT_ORION_API_HOST:-0.0.0.0}
+      PREFECT_ORION_DATABASE_CONNECTION_URL: ${PREFECT_ORION_DATABASE_CONNECTION_URL:-postgresql+asyncpg://postgres:postgres@database:5432/orion}
+    ports:
+      - "${UI_PORT:-4200}:4200"
+    depends_on:
+      - database
+
+  ## Prefect Agent
+  agent:
+    build: ./agent
+    image: ${DOCKER_COMPOSE_IMAGE_NAME:-prefect}-agent:${DOCKER_COMPOSE_IMAGE_TAG:-latest}
+    # image: prefecthq/prefect:2.3.1-python3.10
+    hostname: agent
+    container_name: twpPrefectAgent
+    restart: unless-stopped
+    volumes:
+      - "./deployments/flows:/root/flows"
+    entrypoint: ["prefect", "agent", "start", "-q", "my_queue"]
+    environment:
+      PREFECT_API_URL: ${PREFECT_API_URL:-http://orion:4200/api}
+#     Use PREFECT_API_KEY if connecting the agent to Prefect Cloud
+#     PREFECT_API_KEY: YOUR_API_KEY

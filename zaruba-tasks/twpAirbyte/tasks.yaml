@@ -1,0 +1,11 @@
+tasks:
+
+  startTwpAirbyte:
+    icon: 🪂
+    dependencies:
+      - startTwpAirbyteContainer
+
+  stopTwpAirbyte:
+    icon: ✋
+    dependencies:
+      - stopTwpAirbyteContainer

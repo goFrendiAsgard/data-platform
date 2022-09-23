@@ -1,0 +1,15 @@
+envs:
+
+  twpClickhouse:
+    CLICKHOUSE_DB:
+      default: sample
+      from: TWP_CLICKHOUSE_CLICKHOUSE_DB
+    CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT:
+      default: "1"
+      from: TWP_CLICKHOUSE_CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT
+    CLICKHOUSE_PASSWORD:
+      default: Alch3mist
+      from: TWP_CLICKHOUSE_CLICKHOUSE_PASSWORD
+    CLICKHOUSE_USER:
+      default: root
+      from: TWP_CLICKHOUSE_CLICKHOUSE_USER

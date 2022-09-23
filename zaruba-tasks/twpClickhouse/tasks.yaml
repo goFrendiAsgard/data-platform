@@ -1,0 +1,11 @@
+tasks:
+
+  startTwpClickhouse:
+    icon: 🟨
+    dependencies:
+      - startTwpClickhouseContainer
+
+  stopTwpClickhouse:
+    icon: ✋
+    dependencies:
+      - stopTwpClickhouseContainer

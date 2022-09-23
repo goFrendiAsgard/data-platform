@@ -1,0 +1,11 @@
+tasks:
+
+  startTwpPrefect:
+    icon: 💯
+    dependencies:
+      - startTwpPrefectContainer
+
+  stopTwpPrefect:
+    icon: ✋
+    dependencies:
+      - stopTwpPrefectContainer

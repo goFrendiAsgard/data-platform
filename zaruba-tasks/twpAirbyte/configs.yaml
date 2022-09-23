@@ -1,0 +1,15 @@
+configs:
+
+  twpAirbyte:
+    runInLocal: '{{ .GetValue "runTwpAirbyteInLocal" }}'
+    ports: |
+      {{ .GetEnv "SERVER_PORT" }}
+      {{ .GetEnv "WEB_PORT" }}
+      {{ .GetEnv "TEMPORAL_PORT" }}
+    afterCheck: sleep 5
+    checkCommand: |
+      echo "check twpAirbyte"
+
+  twpAirbyteImage:
+    useImagePrefix: true
+    imageName: twp-airbyte

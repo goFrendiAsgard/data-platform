@@ -1,0 +1,8 @@
+inputs:
+
+  runTwpPrefectInLocal:
+    default: true
+    options: [true, false]
+    allowCustom: false
+    description: Whether to run twpPrefect locally
+    prompt: Run twpPrefect locally?

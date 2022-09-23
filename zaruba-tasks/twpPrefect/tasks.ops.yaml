@@ -1,0 +1,10 @@
+tasks:
+
+  registerTwpPrefectFlows:
+    icon: 🐶
+    extend: zrbRunShellScript
+    location: ../../twpPrefect/deployments
+    configRef: registerTwpPrefectFlows
+    envRef: registerTwpPrefectFlows
+    maxStartRetry: 5
+    startRetryDelay: 10s

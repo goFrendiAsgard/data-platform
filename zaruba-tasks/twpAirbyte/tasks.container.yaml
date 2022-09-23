@@ -1,0 +1,47 @@
+tasks:
+
+  startTwpAirbyteContainer:
+    icon: 🪂
+    extend: zrbStartDockerCompose
+    location: ../../twpAirbyte
+    inputs:
+      - runTwpAirbyteInLocal
+    configRefs:
+      - twpAirbyte
+      - twpAirbyteImage
+    envRefs: 
+      - twpAirbyte
+  
+  buildTwpAirbyteImage:
+    icon: 🏭
+    extend: zrbBuildDockerCompose
+    location: ../../twpAirbyte
+    configRefs: 
+      - twpAirbyteImage
+    envRefs: 
+      - twpAirbyte
+
+  pushTwpAirbyteImage:
+    icon: 📤
+    extend: zrbPushDockerCompose
+    location: ../../twpAirbyte
+    dependencies:
+      - buildTwpAirbyteImage
+    configRefs: 
+      - twpAirbyteImage
+    envRefs: 
+      - twpAirbyte
+
+  stopTwpAirbyteContainer:
+    icon: ✋
+    extend: zrbStopDockerCompose
+    location: ../../twpAirbyte
+    envRefs: 
+      - twpAirbyte
+
+  removeTwpAirbyteContainer:
+    icon: ❌
+    extend: zrbRemoveDockerCompose
+    location: ../../twpAirbyte
+    envRefs: 
+      - twpAirbyte

@@ -1,0 +1,19 @@
+configs:
+
+  twpClickhouse:
+    runInLocal: '{{ .GetValue "runTwpClickhouseInLocal" }}'
+    ports: |
+      8123:8123
+      9000:9000
+
+  twpClickhouseContainer:
+    useImagePrefix: true
+    imageName: twp-clickhouse
+    containerName: twpClickhouse
+    localhost: host.docker.internal
+    afterCheck: sleep 5
+    checkCommand: |
+      echo "check twpClickhouse"
+    command : |
+
+    volumes: |

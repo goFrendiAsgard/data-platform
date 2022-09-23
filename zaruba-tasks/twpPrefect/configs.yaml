@@ -1,0 +1,15 @@
+configs:
+
+  twpPrefect:
+    runInLocal: '{{ .GetValue "runTwpPrefectInLocal" }}'
+    ports: |
+      {{ .GetEnv "PREFECT_HASURA_HOST_PORT" }}
+      {{ .GetEnv "PREFECT_APOLLO_PORT" }}
+      {{ .GetEnv "PREFECT_UI_PORT" }}
+    afterCheck: sleep 5
+    checkCommand: |
+      echo "check twpPrefect"
+
+  twpPrefectImage:
+    useImagePrefix: true
+    imageName: twp-prefect

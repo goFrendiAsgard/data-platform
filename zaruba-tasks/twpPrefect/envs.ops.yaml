@@ -1,0 +1,7 @@
+envs:
+
+  registerTwpPrefectFlows:
+    PREFECT_API_URL:
+      from: REGISTER_TWP_PREFECT_FLOWS_PREFECT_API_URL
+      default: http://localhost:4200/api
+

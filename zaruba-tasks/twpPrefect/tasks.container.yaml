@@ -1,0 +1,47 @@
+tasks:
+
+  startTwpPrefectContainer:
+    icon: 💯
+    extend: zrbStartDockerCompose
+    location: ../../twpPrefect
+    inputs:
+      - runTwpPrefectInLocal
+    configRefs:
+      - twpPrefect
+      - twpPrefectImage
+    envRefs: 
+      - twpPrefect
+  
+  buildTwpPrefectImage:
+    icon: 🏭
+    extend: zrbBuildDockerCompose
+    location: ../../twpPrefect
+    configRefs: 
+      - twpPrefectImage
+    envRefs: 
+      - twpPrefect
+
+  pushTwpPrefectImage:
+    icon: 📤
+    extend: zrbPushDockerCompose
+    location: ../../twpPrefect
+    dependencies:
+      - buildTwpPrefectImage
+    configRefs: 
+      - twpPrefectImage
+    envRefs: 
+      - twpPrefect
+
+  stopTwpPrefectContainer:
+    icon: ✋
+    extend: zrbStopDockerCompose
+    location: ../../twpPrefect
+    envRefs: 
+      - twpPrefect
+
+  removeTwpPrefectContainer:
+    icon: ❌
+    extend: zrbRemoveDockerCompose
+    location: ../../twpPrefect
+    envRefs: 
+      - twpPrefect

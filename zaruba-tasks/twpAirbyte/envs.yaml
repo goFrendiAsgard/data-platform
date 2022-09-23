@@ -1,0 +1,132 @@
+envs:
+
+  twpAirbyte:
+    API_URL:
+      default: /api/v1/
+      from: TWP_AIRBYTE_API_URL
+    CONFIG_DATABASE_PASSWORD:
+      default: ""
+      from: TWP_AIRBYTE_CONFIG_DATABASE_PASSWORD
+    CONFIG_DATABASE_URL:
+      default: ""
+      from: TWP_AIRBYTE_CONFIG_DATABASE_URL
+    CONFIG_DATABASE_USER:
+      default: ""
+      from: TWP_AIRBYTE_CONFIG_DATABASE_USER
+    CONFIG_ROOT:
+      default: /data
+      from: TWP_AIRBYTE_CONFIG_ROOT
+    CONFIGS_DATABASE_MINIMUM_FLYWAY_MIGRATION_VERSION:
+      default: 0.35.15.001
+      from: TWP_AIRBYTE_CONFIGS_DATABASE_MINIMUM_FLYWAY_MIGRATION_VERSION
+    DATA_DOCKER_MOUNT:
+      default: data
+      from: TWP_AIRBYTE_DATA_DOCKER_MOUNT
+    DATABASE_DB:
+      default: airbyte
+      from: TWP_AIRBYTE_DATABASE_DB
+    DATABASE_HOST:
+      default: db
+      from: TWP_AIRBYTE_DATABASE_HOST
+    DATABASE_PASSWORD:
+      default: docker
+      from: TWP_AIRBYTE_DATABASE_PASSWORD
+    DATABASE_PORT:
+      default: "5432"
+      from: TWP_AIRBYTE_DATABASE_PORT
+    DATABASE_URL:
+      default: jdbc:postgresql://db:5432/airbyte
+      from: TWP_AIRBYTE_DATABASE_URL
+    DATABASE_USER:
+      default: docker
+      from: TWP_AIRBYTE_DATABASE_USER
+    DB_DOCKER_MOUNT:
+      default: db
+      from: TWP_AIRBYTE_DB_DOCKER_MOUNT
+    DOCKER_COMPOSE_VOLUME:
+      default: ./volumes
+      from: TWP_AIRBYTE_DOCKER_COMPOSE_VOLUME
+    HACK_LOCAL_ROOT_PARENT:
+      default: /tmp
+      from: TWP_AIRBYTE_HACK_LOCAL_ROOT_PARENT
+    INTERNAL_API_HOST:
+      default: airbyte-server:8001
+      from: TWP_AIRBYTE_INTERNAL_API_HOST
+    JOB_MAIN_CONTAINER_CPU_LIMIT:
+      default: ""
+      from: TWP_AIRBYTE_JOB_MAIN_CONTAINER_CPU_LIMIT
+    JOB_MAIN_CONTAINER_CPU_REQUEST:
+      default: ""
+      from: TWP_AIRBYTE_JOB_MAIN_CONTAINER_CPU_REQUEST
+    JOB_MAIN_CONTAINER_MEMORY_LIMIT:
+      default: ""
+      from: TWP_AIRBYTE_JOB_MAIN_CONTAINER_MEMORY_LIMIT
+    JOB_MAIN_CONTAINER_MEMORY_REQUEST:
+      default: ""
+      from: TWP_AIRBYTE_JOB_MAIN_CONTAINER_MEMORY_REQUEST
+    JOBS_DATABASE_MINIMUM_FLYWAY_MIGRATION_VERSION:
+      default: 0.29.15.001
+      from: TWP_AIRBYTE_JOBS_DATABASE_MINIMUM_FLYWAY_MIGRATION_VERSION
+    LOCAL_DOCKER_MOUNT:
+      default: /tmp/airbyte_local
+      from: TWP_AIRBYTE_LOCAL_DOCKER_MOUNT
+    LOCAL_ROOT:
+      default: /tmp/airbyte_local
+      from: TWP_AIRBYTE_LOCAL_ROOT
+    LOG_LEVEL:
+      default: INFO
+      from: TWP_AIRBYTE_LOG_LEVEL
+    MAX_CHECK_WORKERS:
+      default: "5"
+      from: TWP_AIRBYTE_MAX_CHECK_WORKERS
+    MAX_DISCOVER_WORKERS:
+      default: "5"
+      from: TWP_AIRBYTE_MAX_DISCOVER_WORKERS
+    MAX_SPEC_WORKERS:
+      default: "5"
+      from: TWP_AIRBYTE_MAX_SPEC_WORKERS
+    MAX_SYNC_WORKERS:
+      default: "5"
+      from: TWP_AIRBYTE_MAX_SYNC_WORKERS
+    NEW_SCHEDULER:
+      default: "false"
+      from: TWP_AIRBYTE_NEW_SCHEDULER
+    SENTRY_DSN:
+      default: https://d4b03de0c4574c78999b8d58e55243dc@o1009025.ingest.sentry.io/6102835
+      from: TWP_AIRBYTE_SENTRY_DSN
+    SERVER_PORT:
+      default: "8021"
+      from: TWP_AIRBYTE_SERVER_PORT
+    SUBMITTER_NUM_THREADS:
+      default: "10"
+      from: TWP_AIRBYTE_SUBMITTER_NUM_THREADS
+    SYNC_JOB_MAX_ATTEMPTS:
+      default: "3"
+      from: TWP_AIRBYTE_SYNC_JOB_MAX_ATTEMPTS
+    SYNC_JOB_MAX_TIMEOUT_DAYS:
+      default: "3"
+      from: TWP_AIRBYTE_SYNC_JOB_MAX_TIMEOUT_DAYS
+    TEMPORAL_HOST:
+      default: airbyte-temporal:7233
+      from: TWP_AIRBYTE_TEMPORAL_HOST
+    TEMPORAL_PORT:
+      default: "7233"
+      from: TWP_AIRBYTE_TEMPORAL_PORT
+    TRACKING_STRATEGY:
+      default: segment
+      from: TWP_AIRBYTE_TRACKING_STRATEGY
+    VERSION:
+      default: 0.35.53-alpha
+      from: TWP_AIRBYTE_VERSION
+    WEB_PORT:
+      default: "8020"
+      from: TWP_AIRBYTE_WEB_PORT
+    WEBAPP_URL:
+      default: http://localhost:8000/
+      from: TWP_AIRBYTE_WEBAPP_URL
+    WORKSPACE_DOCKER_MOUNT:
+      default: workspace
+      from: TWP_AIRBYTE_WORKSPACE_DOCKER_MOUNT
+    WORKSPACE_ROOT:
+      default: /tmp/workspace
+      from: TWP_AIRBYTE_WORKSPACE_ROOT

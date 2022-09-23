@@ -1,0 +1,19 @@
+configs:
+
+  registerTwpPrefectFlows:
+    projectName: coba
+    start: |
+      if [ ! -z "venv" ]
+      then
+        python -m venv venv
+        ./venv/bin/python -m pip install --upgrade pip
+      fi
+      source venv/bin/activate
+      pip install -r requirements.txt
+      {{ $this := . -}}
+      {{ range $file := $this.Util.File.List ($this.GetWorkPath "." ) -}}
+        {{ if $this.Util.Str.Submatch $file "\\.py$" -}}
+          echo "${_YELLOW}${_BOLD}Registering {{ $file }}${_NORMAL}"
+          python {{ $file }}
+        {{ end -}}
+      {{ end -}}

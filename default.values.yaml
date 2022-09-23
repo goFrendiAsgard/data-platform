@@ -1,0 +1,10 @@
+defaultBranch: master
+defaultImagePrefix: ""
+defaultImageTag: latest
+defaultKubeContext: docker-desktop
+defaultKubeNamespace: default
+hostDockerInternal: host.docker.internal
+pulumiUseLocalBackend: "false"
+runTwpAirbyteInLocal: "true"
+runTwpClickhouseInLocal: "true"
+runTwpPrefectInLocal: "true"
