@@ -1,0 +1,11 @@
+tasks:
+
+  startTwpKafka:
+    icon: 🪠
+    dependencies:
+      - startTwpKafkaContainer
+
+  stopTwpKafka:
+    icon: ✋
+    dependencies:
+      - stopTwpKafkaContainer

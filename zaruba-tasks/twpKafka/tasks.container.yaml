@@ -1,0 +1,47 @@
+tasks:
+
+  startTwpKafkaContainer:
+    icon: 🪠
+    extend: zrbStartDockerCompose
+    location: ../../twpKafka
+    inputs:
+      - runTwpKafkaInLocal
+    configRefs:
+      - twpKafka
+      - twpKafkaImage
+    envRefs: 
+      - twpKafka
+  
+  buildTwpKafkaImage:
+    icon: 🏭
+    extend: zrbBuildDockerCompose
+    location: ../../twpKafka
+    configRefs: 
+      - twpKafkaImage
+    envRefs: 
+      - twpKafka
+
+  pushTwpKafkaImage:
+    icon: 📤
+    extend: zrbPushDockerCompose
+    location: ../../twpKafka
+    dependencies:
+      - buildTwpKafkaImage
+    configRefs: 
+      - twpKafkaImage
+    envRefs: 
+      - twpKafka
+
+  stopTwpKafkaContainer:
+    icon: ✋
+    extend: zrbStopDockerCompose
+    location: ../../twpKafka
+    envRefs: 
+      - twpKafka
+
+  removeTwpKafkaContainer:
+    icon: ❌
+    extend: zrbRemoveDockerCompose
+    location: ../../twpKafka
+    envRefs: 
+      - twpKafka

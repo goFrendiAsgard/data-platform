@@ -1,0 +1,8 @@
+inputs:
+
+  runTwpKafkaInLocal:
+    default: true
+    options: [true, false]
+    allowCustom: false
+    description: Whether to run twpKafka locally
+    prompt: Run twpKafka locally?

@@ -2,6 +2,7 @@ includes:
   - ./zaruba-tasks/twpClickhouse/index.yaml
   - ./zaruba-tasks/twpAirbyte/index.yaml
   - ./zaruba-tasks/twpPrefect/index.yaml
+  - ./zaruba-tasks/twpKafka/index.yaml
 
 tasks:
 
@@ -27,6 +28,13 @@ tasks:
       - startTwpClickhouse
       - startTwpAirbyte
       - startTwpPrefect
+      - startTwpKafka
+
+  stop:
+    icon: ✋
+    extend: zrbWrapper
+    dependencies:
+      - stopContainers
 
   run:
     icon: 🏁
@@ -40,6 +48,7 @@ tasks:
       - startTwpClickhouseContainer
       - startTwpAirbyteContainer
       - startTwpPrefectContainer
+      - startTwpKafkaContainer
 
   runContainers:
     icon: 🐳
@@ -53,6 +62,7 @@ tasks:
       - stopTwpClickhouseContainer
       - stopTwpAirbyteContainer
       - stopTwpPrefectContainer
+      - stopTwpKafkaContainer
 
   removeContainers:
     icon: ❌
@@ -61,6 +71,7 @@ tasks:
       - removeTwpClickhouseContainer
       - removeTwpAirbyteContainer
       - removeTwpPrefectContainer
+      - removeTwpKafkaContainer
 
   pullImages:
     icon: 📥
@@ -74,6 +85,7 @@ tasks:
       - pushTwpClickhouseImage
       - pushTwpAirbyteImage
       - pushTwpPrefectImage
+      - pushTwpKafkaImage
 
   buildImages:
     icon: 🏭
@@ -82,6 +94,7 @@ tasks:
       - buildTwpClickhouseImage
       - buildTwpAirbyteImage
       - buildTwpPrefectImage
+      - buildTwpKafkaImage
 
   prepareDeployments:
     icon: 🔧

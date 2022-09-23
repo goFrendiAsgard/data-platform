@@ -1,0 +1,27 @@
+envs:
+
+  twpKafka:
+    CONNECT_PORT:
+      default: "8083"
+      from: TWP_KAFKA_CONNECT_PORT
+    CONTROL_CENTER_PORT:
+      default: "9021"
+      from: TWP_KAFKA_CONTROL_CENTER_PORT
+    KAFKA_JMX_PORT:
+      default: "9101"
+      from: TWP_KAFKA_KAFKA_JMX_PORT
+    KAFKA_LISTENER_PORT:
+      default: "9092"
+      from: TWP_KAFKA_KAFKA_LISTENER_PORT
+    KSQL_DB_PORT:
+      default: "8088"
+      from: TWP_KAFKA_KSQL_DB_PORT
+    REST_PROXY:
+      default: "8082"
+      from: TWP_KAFKA_REST_PROXY
+    SCHEMA_REGISTRY_PORT:
+      default: "8081"
+      from: TWP_KAFKA_SCHEMA_REGISTRY_PORT
+    ZOOKEEPER_PORT:
+      default: "2181"
+      from: TWP_KAFKA_ZOOKEEPER_PORT
