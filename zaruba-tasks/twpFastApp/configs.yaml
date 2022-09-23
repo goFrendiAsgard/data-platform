@@ -1,0 +1,34 @@
+configs:
+
+  twpFastApp:
+    runInLocal: '{{ .GetValue "runTwpFastAppInLocal" }}'
+    ports: |
+      {{ .GetEnv "APP_HTTP_PORT" }}
+
+  twpFastAppContainer:
+    useImagePrefix: true
+    imageName: twp-fast-app
+    containerName: twpFastApp
+    localhost: host.docker.internal
+    checkCommand: |
+      echo "check twpFastApp"
+    volumes: |
+
+
+  startTwpFastApp:
+    start: |
+      . "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/run.sh" }}" "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/application.sh" }}"
+    check: |
+      echo "check twpFastApp"
+
+  prepareTwpFastApp:
+    start: |
+      . "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/run.sh" }}" "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/preparation.sh" }}"
+
+  testTwpFastApp:
+    start: |
+      . "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/run.sh" }}" "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/test.sh" }}"
+
+  migrateTwpFastApp:
+    start: |
+      . "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/run.sh" }}" "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/migration.sh" }}"

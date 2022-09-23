@@ -1,0 +1,17 @@
+tasks:
+
+  queryTwpMysql:
+    icon: 📜
+    extend: zrbRunInDockerContainer
+    location: ../../twpMysql
+    dependencies:
+      - startTwpMysqlContainer
+    syncEnv: false
+    configRef: twpMysqlContainer
+    envRef: twpMysql
+    inputs:
+      - sql
+    configs:
+      templateLocation: '{{ .GetProjectPath "zaruba-tasks/twpMysql/queryTemplate" }}'
+    maxStartRetry: 5
+    startRetryDelay: 10s

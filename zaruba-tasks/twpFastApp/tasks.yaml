@@ -1,0 +1,46 @@
+tasks:
+
+  startTwpFastApp:
+    icon: ⚛️
+    extend: zrbStartApp
+    location: ../../twpFastApp
+    inputs:
+      - runTwpFastAppInLocal
+    dependencies:
+      - prepareTwpFastApp
+      - migrateTwpFastApp
+    configRefs:
+      - startTwpFastApp
+      - twpFastApp
+    envRef: twpFastApp
+
+  prepareTwpFastApp:
+    icon: 🔧
+    extend: zrbRunShellScript
+    location: ../../twpFastApp
+    configRefs:
+      - prepareTwpFastApp
+      - twpFastApp
+    envRef: twpFastApp
+
+  testTwpFastApp:
+    icon: ✅
+    extend: zrbRunShellScript
+    location: ../../twpFastApp
+    dependencies:
+      - prepareTwpFastApp
+    configRefs:
+      - testTwpFastApp
+      - twpFastApp
+    envRef: twpFastApp
+
+  migrateTwpFastApp:
+    icon: 🦆
+    extend: zrbRunShellScript
+    location: ../../twpFastApp
+    dependencies:
+      - prepareTwpFastApp
+    configRefs:
+      - migrateTwpFastApp
+      - twpFastApp
+    envRef: twpFastApp

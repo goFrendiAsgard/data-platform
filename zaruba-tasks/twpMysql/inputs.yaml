@@ -1,0 +1,8 @@
+inputs:
+
+  runTwpMysqlInLocal:
+    default: true
+    options: [true, false]
+    allowCustom: false
+    description: Whether to run twpMysql locally
+    prompt: Run twpMysql locally?

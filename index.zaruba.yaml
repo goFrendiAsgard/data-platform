@@ -3,23 +3,28 @@ includes:
   - ./zaruba-tasks/twpAirbyte/index.yaml
   - ./zaruba-tasks/twpPrefect/index.yaml
   - ./zaruba-tasks/twpKafka/index.yaml
+  - ./zaruba-tasks/twpMysql/index.yaml
+  - ./zaruba-tasks/twpFastApp/index.yaml
 
 tasks:
 
   prepare:
     icon: 🔧
     extend: zrbWrapper
-    dependencies: []
+    dependencies:
+      - prepareTwpFastApp
 
   migrate:
     icon: 🦆
     extend: zrbWrapper
-    dependencies: []
+    dependencies:
+      - migrateTwpFastApp
 
   test:
     icon: ✅
     extend: zrbWrapper
-    dependencies: []
+    dependencies:
+      - testTwpFastApp
 
   start:
     icon: 🏁
@@ -29,6 +34,8 @@ tasks:
       - startTwpAirbyte
       - startTwpPrefect
       - startTwpKafka
+      - startTwpMysql
+      - startTwpFastApp
 
   stop:
     icon: ✋
@@ -49,6 +56,8 @@ tasks:
       - startTwpAirbyteContainer
       - startTwpPrefectContainer
       - startTwpKafkaContainer
+      - startTwpMysqlContainer
+      - startTwpFastAppContainer
 
   runContainers:
     icon: 🐳
@@ -63,6 +72,8 @@ tasks:
       - stopTwpAirbyteContainer
       - stopTwpPrefectContainer
       - stopTwpKafkaContainer
+      - stopTwpMysqlContainer
+      - stopTwpFastAppContainer
 
   removeContainers:
     icon: ❌
@@ -72,6 +83,8 @@ tasks:
       - removeTwpAirbyteContainer
       - removeTwpPrefectContainer
       - removeTwpKafkaContainer
+      - removeTwpMysqlContainer
+      - removeTwpFastAppContainer
 
   pullImages:
     icon: 📥
@@ -86,6 +99,8 @@ tasks:
       - pushTwpAirbyteImage
       - pushTwpPrefectImage
       - pushTwpKafkaImage
+      - pushTwpMysqlImage
+      - pushTwpFastAppImage
 
   buildImages:
     icon: 🏭
@@ -95,6 +110,8 @@ tasks:
       - buildTwpAirbyteImage
       - buildTwpPrefectImage
       - buildTwpKafkaImage
+      - buildTwpMysqlImage
+      - buildTwpFastAppImage
 
   prepareDeployments:
     icon: 🔧

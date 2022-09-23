@@ -1,0 +1,17 @@
+tasks:
+
+  createTwpFastAppMigration:
+    icon: 🔧
+    extend: zrbRunShellScript
+    location: ../../twpFastApp
+    dependencies:
+      - prepareTwpFastApp
+    configRefs:
+      - createTwpFastAppMigration
+      - twpFastApp
+    envRef: twpFastApp
+    envs:
+      MIGRATION_RUN_ALL:
+        default: 1
+      IS_GENERATING_MIGRATION:
+        default: 1

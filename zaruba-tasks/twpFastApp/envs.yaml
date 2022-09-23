@@ -1,0 +1,192 @@
+envs:
+
+  twpFastApp:
+    APP_ACCESS_TOKEN_ALGORITHM:
+      default: HS256
+      from: TWP_FAST_APP_APP_ACCESS_TOKEN_ALGORITHM
+    APP_ACCESS_TOKEN_EXPIRE:
+      default: "1800"
+      from: TWP_FAST_APP_APP_ACCESS_TOKEN_EXPIRE
+    APP_ACCESS_TOKEN_SECRET_KEY:
+      default: 09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      from: TWP_FAST_APP_APP_ACCESS_TOKEN_SECRET_KEY
+    APP_CORS_ALLOW_CREDENTIALS:
+      default: "false"
+      from: TWP_FAST_APP_APP_CORS_ALLOW_CREDENTIALS
+    APP_CORS_ALLOW_HEADERS:
+      default: '["*"]'
+      from: TWP_FAST_APP_APP_CORS_ALLOW_HEADERS
+    APP_CORS_ALLOW_METHODS:
+      default: '["*"]'
+      from: TWP_FAST_APP_APP_CORS_ALLOW_METHODS
+    APP_CORS_ALLOW_ORIGIN_REGEX:
+      default: ""
+      from: TWP_FAST_APP_APP_CORS_ALLOW_ORIGIN_REGEX
+    APP_CORS_ALLOW_ORIGINS:
+      default: '["*"]'
+      from: TWP_FAST_APP_APP_CORS_ALLOW_ORIGINS
+    APP_CORS_EXPOSE_HEADERS:
+      default: '[]'
+      from: TWP_FAST_APP_APP_CORS_EXPOSE_HEADERS
+    APP_CORS_MAX_AGE:
+      default: "600"
+      from: TWP_FAST_APP_APP_CORS_MAX_AGE
+    APP_CREATE_ACCESS_TOKEN_URL_PATH:
+      default: /api/v1/create-access-token/
+      from: TWP_FAST_APP_APP_CREATE_ACCESS_TOKEN_URL_PATH
+    APP_CREATE_OAUTH_ACCESS_TOKEN:
+      default: /api/v1/create-oauth-access-token/
+      from: TWP_FAST_APP_APP_CREATE_OAUTH_ACCESS_TOKEN
+    APP_DB_CREATE_ALL:
+      default: "1"
+      from: TWP_FAST_APP_APP_DB_CREATE_ALL
+    APP_ENABLE_API:
+      default: "1"
+      from: TWP_FAST_APP_APP_ENABLE_API
+    APP_ENABLE_AUTH_MODULE:
+      default: "1"
+      from: TWP_FAST_APP_APP_ENABLE_AUTH_MODULE
+    APP_ENABLE_EVENT_HANDLER:
+      default: "1"
+      from: TWP_FAST_APP_APP_ENABLE_EVENT_HANDLER
+    APP_ENABLE_ROUTE_HANDLER:
+      default: "1"
+      from: TWP_FAST_APP_APP_ENABLE_ROUTE_HANDLER
+    APP_ENABLE_RPC_HANDLER:
+      default: "1"
+      from: TWP_FAST_APP_APP_ENABLE_RPC_HANDLER
+    APP_ENABLE_UI:
+      default: "1"
+      from: TWP_FAST_APP_APP_ENABLE_UI
+    APP_ERROR_THRESHOLD:
+      default: "10"
+      from: TWP_FAST_APP_APP_ERROR_THRESHOLD
+    APP_GUEST_USERNAME:
+      default: guest
+      from: TWP_FAST_APP_APP_GUEST_USERNAME
+    APP_HTTP_PORT:
+      default: "3000"
+      from: TWP_FAST_APP_APP_HTTP_PORT
+    APP_KAFKA_BOOTSTRAP_SERVERS:
+      default: localhost:9092
+      from: TWP_FAST_APP_APP_KAFKA_BOOTSTRAP_SERVERS
+    APP_KAFKA_SASL_MECHANISM:
+      default: PLAIN
+      from: TWP_FAST_APP_APP_KAFKA_SASL_MECHANISM
+    APP_KAFKA_SASL_PLAIN_PASSWORD:
+      default: ""
+      from: TWP_FAST_APP_APP_KAFKA_SASL_PLAIN_PASSWORD
+    APP_KAFKA_SASL_PLAIN_USERNAME:
+      default: ""
+      from: TWP_FAST_APP_APP_KAFKA_SASL_PLAIN_USERNAME
+    APP_KAFKA_SCHEMA_REGISTRY:
+      default: http://localhost:8081
+      from: TWP_FAST_APP_APP_KAFKA_SCHEMA_REGISTRY
+    APP_KAFKA_SECURITY_PROTOCOL:
+      default: PLAINTEXT
+      from: TWP_FAST_APP_APP_KAFKA_SECURITY_PROTOCOL
+    APP_MESSAGE_BUS_TYPE:
+      default: local
+      from: TWP_FAST_APP_APP_MESSAGE_BUS_TYPE
+    APP_PUBLIC_DIR:
+      default: public
+      from: TWP_FAST_APP_APP_PUBLIC_DIR
+    APP_PUBLIC_URL_PATH:
+      default: /public
+      from: TWP_FAST_APP_APP_PUBLIC_URL_PATH
+    APP_RABBITMQ_HOST:
+      default: localhost
+      from: TWP_FAST_APP_APP_RABBITMQ_HOST
+    APP_RABBITMQ_PASS:
+      default: Alch3mist
+      from: TWP_FAST_APP_APP_RABBITMQ_PASS
+    APP_RABBITMQ_USER:
+      default: root
+      from: TWP_FAST_APP_APP_RABBITMQ_USER
+    APP_RABBITMQ_VHOST:
+      default: /
+      from: TWP_FAST_APP_APP_RABBITMQ_VHOST
+    APP_RENEW_ACCESS_TOKEN_INTERVAL:
+      default: "300"
+      from: TWP_FAST_APP_APP_RENEW_ACCESS_TOKEN_INTERVAL
+    APP_RENEW_ACCESS_TOKEN_URL_PATH:
+      default: /api/v1/renew-access-token/
+      from: TWP_FAST_APP_APP_RENEW_ACCESS_TOKEN_URL_PATH
+    APP_ROOT_INITIAL_EMAIL:
+      default: root@innistrad.com
+      from: TWP_FAST_APP_APP_ROOT_INITIAL_EMAIL
+    APP_ROOT_INITIAL_FULL_NAME:
+      default: root
+      from: TWP_FAST_APP_APP_ROOT_INITIAL_FULL_NAME
+    APP_ROOT_INITIAL_PASSWORD:
+      default: Alch3mist
+      from: TWP_FAST_APP_APP_ROOT_INITIAL_PASSWORD
+    APP_ROOT_INITIAL_PHONE_NUMBER:
+      default: "+621234567890"
+      from: TWP_FAST_APP_APP_ROOT_INITIAL_PHONE_NUMBER
+    APP_ROOT_PERMISSION:
+      default: root
+      from: TWP_FAST_APP_APP_ROOT_PERMISSION
+    APP_ROOT_USERNAME:
+      default: root
+      from: TWP_FAST_APP_APP_ROOT_USERNAME
+    APP_RPC_TYPE:
+      default: local
+      from: TWP_FAST_APP_APP_RPC_TYPE
+    APP_SEED_ROOT_USER:
+      default: "1"
+      from: TWP_FAST_APP_APP_SEED_ROOT_USER
+    APP_SQLALCHEMY_DATABASE_URL:
+      default: sqlite:///database.db
+      from: TWP_FAST_APP_APP_SQLALCHEMY_DATABASE_URL
+    APP_UI_BACKEND_URL:
+      default: http://localhost:3000
+      from: TWP_FAST_APP_APP_UI_BACKEND_URL
+    APP_UI_PAGE_DIR:
+      default: pages
+      from: TWP_FAST_APP_APP_UI_PAGE_DIR
+    APP_UI_SITE_NAME:
+      default: App
+      from: TWP_FAST_APP_APP_UI_SITE_NAME
+    MIGRATION_RUN_ALL:
+      default: "1"
+      from: TWP_FAST_APP_MIGRATION_RUN_ALL
+    MIGRATION_SQLALCHEMY_DATABASE_URL:
+      default: sqlite:///migration.db
+      from: TWP_FAST_APP_MIGRATION_SQLALCHEMY_DATABASE_URL
+    TEST_INTEGRATION:
+      default: "0"
+      from: TWP_FAST_APP_TEST_INTEGRATION
+    TEST_KAFKA_BOOTSTRAP_SERVERS:
+      default: localhost:9092
+      from: TWP_FAST_APP_TEST_KAFKA_BOOTSTRAP_SERVERS
+    TEST_KAFKA_SASL_MECHANISM:
+      default: PLAIN
+      from: TWP_FAST_APP_TEST_KAFKA_SASL_MECHANISM
+    TEST_KAFKA_SASL_PLAIN_PASSWORD:
+      default: ""
+      from: TWP_FAST_APP_TEST_KAFKA_SASL_PLAIN_PASSWORD
+    TEST_KAFKA_SASL_PLAIN_USERNAME:
+      default: ""
+      from: TWP_FAST_APP_TEST_KAFKA_SASL_PLAIN_USERNAME
+    TEST_KAFKA_SCHEMA_REGISTRY:
+      default: http://localhost:8081
+      from: TWP_FAST_APP_TEST_KAFKA_SCHEMA_REGISTRY
+    TEST_KAFKA_SECURITY_PROTOCOL:
+      default: PLAINTEXT
+      from: TWP_FAST_APP_TEST_KAFKA_SECURITY_PROTOCOL
+    TEST_RABBITMQ_HOST:
+      default: localhost
+      from: TWP_FAST_APP_TEST_RABBITMQ_HOST
+    TEST_RABBITMQ_PASS:
+      default: Alch3mist
+      from: TWP_FAST_APP_TEST_RABBITMQ_PASS
+    TEST_RABBITMQ_USER:
+      default: root
+      from: TWP_FAST_APP_TEST_RABBITMQ_USER
+    TEST_RABBITMQ_VHOST:
+      default: /
+      from: TWP_FAST_APP_TEST_RABBITMQ_VHOST
+    TEST_SQLALCHEMY_DATABASE_URL:
+      default: sqlite:///test.db
+      from: TWP_FAST_APP_TEST_SQLALCHEMY_DATABASE_URL

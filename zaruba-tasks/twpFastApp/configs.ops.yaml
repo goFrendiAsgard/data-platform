@@ -1,0 +1,5 @@
+configs:
+
+  createTwpFastAppMigration:
+    start: |
+      . "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/run.sh" }}" "{{ .GetProjectPath "zaruba-tasks/twpFastApp/bash/createMigration.sh" }}"

@@ -1,0 +1,15 @@
+envs:
+
+  twpMysql:
+    MYSQL_DATABASE:
+      default: sample
+      from: TWP_MYSQL_MYSQL_DATABASE
+    MYSQL_PASSWORD:
+      default: mysql
+      from: TWP_MYSQL_MYSQL_PASSWORD
+    MYSQL_ROOT_PASSWORD:
+      default: Alch3mist
+      from: TWP_MYSQL_MYSQL_ROOT_PASSWORD
+    MYSQL_USER:
+      default: mysql
+      from: TWP_MYSQL_MYSQL_USER

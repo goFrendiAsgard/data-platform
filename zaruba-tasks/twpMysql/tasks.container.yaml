@@ -1,0 +1,55 @@
+tasks:
+
+  startTwpMysqlContainer:
+    icon: 🐬
+    extend: zrbStartDockerContainer
+    location: ../../twpMysql
+    inputs:
+      - runTwpMysqlInLocal
+    dependencies:
+      - buildTwpMysqlImage
+    configRefs:
+      - twpMysqlContainer
+      - twpMysql
+    envRefs: 
+      - twpMysql
+
+  buildTwpMysqlImage:
+    icon: 🏭
+    extend: zrbBuildDockerImage
+    location: ../../twpMysql
+    configRefs:
+      - twpMysqlContainer
+      - twpMysql
+    envRefs: 
+      - twpMysql
+
+  pushTwpMysqlImage:
+    icon: 📤
+    extend: zrbPushDockerImage
+    dependencies:
+      - buildTwpMysqlImage
+    configRefs:
+      - twpMysqlContainer
+      - twpMysql
+    envRefs: 
+      - twpMysql
+
+  stopTwpMysqlContainer:
+    icon: ✋
+    extend: zrbStopDockerContainer
+    configRefs:
+      - twpMysqlContainer
+      - twpMysql
+    envRefs: 
+      - twpMysql
+
+  removeTwpMysqlContainer:
+    icon: ❌
+    extend: zrbRemoveDockerContainer
+    location: ../../twpMysql
+    configRefs:
+      - twpMysqlContainer
+      - twpMysql
+    envRefs: 
+      - twpMysql

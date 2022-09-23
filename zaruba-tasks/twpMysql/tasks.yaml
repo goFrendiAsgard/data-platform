@@ -1,0 +1,11 @@
+tasks:
+
+  startTwpMysql:
+    icon: 🐬
+    dependencies:
+      - startTwpMysqlContainer
+
+  stopTwpMysql:
+    icon: ✋
+    dependencies:
+      - stopTwpMysqlContainer

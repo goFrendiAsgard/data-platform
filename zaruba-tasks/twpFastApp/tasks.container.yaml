@@ -1,0 +1,55 @@
+tasks:
+
+  startTwpFastAppContainer:
+    icon: ⚛️
+    extend: zrbStartDockerContainer
+    location: ../../twpFastApp
+    inputs:
+      - runTwpFastAppInLocal
+    dependencies:
+      - buildTwpFastAppImage
+    configRefs:
+      - twpFastAppContainer
+      - twpFastApp
+    envRefs: 
+      - twpFastApp
+
+  buildTwpFastAppImage:
+    icon: 🏭
+    extend: zrbBuildDockerImage
+    location: ../../twpFastApp
+    configRefs:
+      - twpFastAppContainer
+      - twpFastApp
+    envRefs: 
+      - twpFastApp
+
+  pushTwpFastAppImage:
+    icon: 📤
+    extend: zrbPushDockerImage
+    dependencies:
+      - buildTwpFastAppImage
+    configRefs:
+      - twpFastAppContainer
+      - twpFastApp
+    envRefs: 
+      - twpFastApp
+
+  stopTwpFastAppContainer:
+    icon: ✋
+    extend: zrbStopDockerContainer
+    configRefs:
+      - twpFastAppContainer
+      - twpFastApp
+    envRefs: 
+      - twpFastApp
+
+  removeTwpFastAppContainer:
+    icon: ❌
+    extend: zrbRemoveDockerContainer
+    location: ../../twpFastApp
+    configRefs:
+      - twpFastAppContainer
+      - twpFastApp
+    envRefs: 
+      - twpFastApp

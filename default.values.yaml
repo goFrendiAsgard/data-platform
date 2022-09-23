@@ -7,5 +7,7 @@ hostDockerInternal: host.docker.internal
 pulumiUseLocalBackend: "false"
 runTwpAirbyteInLocal: "true"
 runTwpClickhouseInLocal: "true"
+runTwpFastAppInLocal: "true"
 runTwpKafkaInLocal: "true"
+runTwpMysqlInLocal: "true"
 runTwpPrefectInLocal: "true"

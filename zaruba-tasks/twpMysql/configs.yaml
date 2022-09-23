@@ -1,0 +1,19 @@
+configs:
+
+  twpMysql:
+    runInLocal: '{{ .GetValue "runTwpMysqlInLocal" }}'
+    ports: |
+      3306
+
+  twpMysqlContainer:
+    useImagePrefix: true
+    imageName: twp-mysql
+    containerName: twpMysql
+    localhost: host.docker.internal
+    afterCheck: sleep 5
+    checkCommand: |
+      mysqladmin ping -u "root" -p{{ .GetEnv "MYSQL_ROOT_PASSWORD" }}
+    command : |
+
+    volumes: |
+      initdb.d:/docker-entrypoint-initdb.d

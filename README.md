@@ -1,4 +1,4 @@
-# Demo untuk Tekno Barent Peter
+# Demo untuk Tekno Bareng Peter
 
 Pada repositori ini ada beberapa komponen yang umum dipakai dalam data engineering:
 
