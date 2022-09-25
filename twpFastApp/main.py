@@ -1,3 +1,7 @@
+from modules.content.content.repos.dbContentRepo import DBContentRepo
+from modules.content import (
+    register_content_api_route, register_content_ui_route, register_content_event_handler, register_content_rpc_handler
+)
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy import create_engine
 from schemas.user import UserData
@@ -92,3 +96,22 @@ if enable_auth_module:
     # serve RPC
     if enable_rpc_handler:
         register_auth_rpc_handler(rpc, role_service, user_service, token_service, session_service)
+
+################################################
+# -- 🧩 Content module
+################################################
+enable_content_module = os.getenv('APP_ENABLE_CONTENT_MODULE', '1') != '0'
+if enable_content_module:
+    content_repo = DBContentRepo(engine=engine, create_all=db_create_all)
+    # API route
+    if enable_route_handler and enable_api:
+        register_content_api_route(app, mb, rpc, auth_service)
+    # UI route
+    if enable_route_handler and enable_ui:
+        register_content_ui_route(app, mb, rpc, menu_service, page_template)
+    # handle event
+    if enable_event_handler:
+        register_content_event_handler(mb)
+    # serve RPC
+    if enable_rpc_handler:
+        register_content_rpc_handler(rpc, content_repo)

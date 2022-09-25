@@ -9,6 +9,8 @@ tasks:
     dependencies:
       - prepareTwpFastApp
       - migrateTwpFastApp
+      - startTwpKafkaContainer
+      - startTwpMysqlContainer
     configRefs:
       - startTwpFastApp
       - twpFastApp
@@ -39,6 +41,7 @@ tasks:
     extend: zrbRunShellScript
     location: ../../twpFastApp
     dependencies:
+      - startTwpMysqlContainer
       - prepareTwpFastApp
     configRefs:
       - migrateTwpFastApp

@@ -86,7 +86,7 @@ envs:
       default: PLAINTEXT
       from: TWP_FAST_APP_APP_KAFKA_SECURITY_PROTOCOL
     APP_MESSAGE_BUS_TYPE:
-      default: local
+      default: kafka
       from: TWP_FAST_APP_APP_MESSAGE_BUS_TYPE
     APP_PUBLIC_DIR:
       default: public
@@ -137,7 +137,7 @@ envs:
       default: "1"
       from: TWP_FAST_APP_APP_SEED_ROOT_USER
     APP_SQLALCHEMY_DATABASE_URL:
-      default: sqlite:///database.db
+      default: mysql+pymysql://root:Alch3mist@localhost:3306/sample?charset=utf8mb4
       from: TWP_FAST_APP_APP_SQLALCHEMY_DATABASE_URL
     APP_UI_BACKEND_URL:
       default: http://localhost:3000
@@ -190,3 +190,7 @@ envs:
     TEST_SQLALCHEMY_DATABASE_URL:
       default: sqlite:///test.db
       from: TWP_FAST_APP_TEST_SQLALCHEMY_DATABASE_URL
+    APP_ENABLE_CONTENT_MODULE:
+      from: TWP_FAST_APP_APP_ENABLE_CONTENT_MODULE
+      default: 1
+

@@ -8,6 +8,8 @@ tasks:
       - runTwpFastAppInLocal
     dependencies:
       - buildTwpFastAppImage
+      - startTwpKafkaContainer
+      - startTwpMysqlContainer
     configRefs:
       - twpFastAppContainer
       - twpFastApp

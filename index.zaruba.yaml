@@ -4,8 +4,8 @@ includes:
   - ./zaruba-tasks/twpPrefect/index.yaml
   - ./zaruba-tasks/twpKafka/index.yaml
   - ./zaruba-tasks/twpMysql/index.yaml
-  - ./zaruba-tasks/twpFastApp/index.yaml
   - ./zaruba-tasks/twpMaterialize/index.yaml
+  - ./zaruba-tasks/twpFastApp/index.yaml
 
 tasks:
 
@@ -36,8 +36,8 @@ tasks:
       - startTwpPrefect
       - startTwpKafka
       - startTwpMysql
-      - startTwpFastApp
       - startTwpMaterialize
+      - startTwpFastApp
 
   stop:
     icon: ✋
@@ -59,8 +59,8 @@ tasks:
       - startTwpPrefectContainer
       - startTwpKafkaContainer
       - startTwpMysqlContainer
-      - startTwpFastAppContainer
       - startTwpMaterializeContainer
+      - startTwpFastAppContainer
 
   runContainers:
     icon: 🐳
@@ -76,8 +76,8 @@ tasks:
       - stopTwpPrefectContainer
       - stopTwpKafkaContainer
       - stopTwpMysqlContainer
-      - stopTwpFastAppContainer
       - stopTwpMaterializeContainer
+      - stopTwpFastAppContainer
 
   removeContainers:
     icon: ❌
@@ -88,8 +88,8 @@ tasks:
       - removeTwpPrefectContainer
       - removeTwpKafkaContainer
       - removeTwpMysqlContainer
-      - removeTwpFastAppContainer
       - removeTwpMaterializeContainer
+      - removeTwpFastAppContainer
 
   pullImages:
     icon: 📥
@@ -105,8 +105,8 @@ tasks:
       - pushTwpPrefectImage
       - pushTwpKafkaImage
       - pushTwpMysqlImage
-      - pushTwpFastAppImage
       - pushTwpMaterializeImage
+      - pushTwpFastAppImage
 
   buildImages:
     icon: 🏭
@@ -117,8 +117,8 @@ tasks:
       - buildTwpPrefectImage
       - buildTwpKafkaImage
       - buildTwpMysqlImage
-      - buildTwpFastAppImage
       - buildTwpMaterializeImage
+      - buildTwpFastAppImage
 
   prepareDeployments:
     icon: 🔧
