@@ -1,15 +1,18 @@
 <h1 id="content-title">No content</h1>
 <img id="content-media" src="https://c.tenor.com/-jlcuGvl9TUAAAAS/tv-old.gif" />
 <p id="content-description"></p>
-<div id="button-container" class="container"></div>
+<div id="button-container" class="container">
+    <button id="content-button-quit" class="btn btn-danger">Stop</button>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-$(document).ready(function() {
 
-    const sessionId=crypto.randomUUID();
-    let contents = [];
-    let contentId = '';
+const sessionId = crypto.randomUUID();
+let contentId = '';
+let contents = [];
+
+$(document).ready(function() {
 
     $.ajax({
         method: 'GET',
@@ -19,19 +22,51 @@ $(document).ready(function() {
             for(let index = 0; index < contents.length; index++) {
                 const content = contents[index];
                 const buttonId = `content-button-${index}`;
-                console.log(buttonId);
-                $("#button-container").append($(`<input id="${buttonId}" class="btn btn-primary" type="button" value="${content.title}"/>`));
+                $("#button-container").append($(`<button id="${buttonId}" class="btn btn-primary">${content.title}</button>`));
                 $(`#${buttonId}`).on('click', function() {
                     $('#content-description').html(content.description);
                     $('#content-media').attr('src', content.url);
                     $('#content-title').html(content.title);
                     contentId = content.id;
+                    inform_view();
                 });
             }
         },
+        error: function(error) {
+            console.error(error);
+        }
+    });
+
+    $('#content-button-quit').click(function() {
+        $('#content-description').html('');
+        $('#content-media').attr('src', 'https://c.tenor.com/-jlcuGvl9TUAAAAS/tv-old.gif');
+        $('#content-title').html('No content');
+        contentId = '';
     });
 
 
+    function inform_view() {
+        if (contentId == '') {
+            return;
+        }
+        $.ajax({
+            method: 'POST',
+            url: '{{ backend_url }}/api/v1/views',
+            dataType: 'json',
+            processData: false,
+            contentType: 'application/json',
+            data: JSON.stringify({
+                session_id: sessionId,
+                content_id: contentId
+            }),
+            success: function() {
+                setTimeout(inform_view, 15000);
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    }
 
 });
 </script>

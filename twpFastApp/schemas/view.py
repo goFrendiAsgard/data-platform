@@ -5,7 +5,7 @@ import datetime
 class ViewData(BaseModel):
     content_id: str
     session_id: str
-    user_id: str
+    user_id: Optional[str]
     created_at: Optional[datetime.datetime]
     created_by: Optional[str]
     updated_at: Optional[datetime.datetime]

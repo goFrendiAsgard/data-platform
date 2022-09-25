@@ -19,9 +19,11 @@ import sys
 def register_content_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service: AuthService):
 
     @app.get('/api/v1/contents/', response_model=ContentResult)
-    def find_contents(keyword: str='', limit: int=100, offset: int=0, current_user:  User = Depends(auth_service.is_authorized('api:content:read'))) -> ContentResult:
+    def find_contents(keyword: str='', limit: int=100, offset: int=0, current_user:  User = Depends(auth_service.everyone())) -> ContentResult:
         result = {}
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             result = rpc.call('find_content', keyword, limit, offset)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -30,9 +32,11 @@ def register_content_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, au
 
 
     @app.get('/api/v1/contents/{id}', response_model=Content)
-    def find_content_by_id(id: str, current_user:  User = Depends(auth_service.is_authorized('api:content:read'))) -> Content:
+    def find_content_by_id(id: str, current_user:  User = Depends(auth_service.everyone())) -> Content:
         content = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             content = rpc.call('find_content_by_id', id)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -46,6 +50,8 @@ def register_content_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, au
     def insert_content(content_data: ContentData, current_user:  User = Depends(auth_service.is_authorized('api:content:create'))) -> Content:
         content = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             content = rpc.call('insert_content', content_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -59,6 +65,8 @@ def register_content_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, au
     def update_content(id: str, content_data: ContentData, current_user:  User = Depends(auth_service.is_authorized('api:content:update'))) -> Content:
         content = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             content = rpc.call('update_content', id, content_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -72,6 +80,8 @@ def register_content_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, au
     def delete_content(id: str, current_user:  User = Depends(auth_service.is_authorized('api:content:delete'))) -> Content:
         content = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             content = rpc.call('delete_content', id, current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 

@@ -1,13 +1,13 @@
 from typing import Any, Optional, Mapping
-from helpers.transport import RPC
+from helpers.transport import RPC, MessageBus
 from schemas.view import View, ViewData
 from schemas.user import User
 from modules.content.view.repos.viewRepo import ViewRepo
 from modules.content.view.viewService import ViewService
 
-def register_view_entity_rpc(rpc: RPC, view_repo: ViewRepo):
+def register_view_entity_rpc(rpc: RPC, mb: MessageBus, view_repo: ViewRepo):
 
-    view_service = ViewService(view_repo)
+    view_service = ViewService(mb, view_repo)
 
     @rpc.handle('find_view')
     def find_views(keyword: str, limit: int, offset: int) -> Mapping[str, Any]:
@@ -23,6 +23,8 @@ def register_view_entity_rpc(rpc: RPC, view_repo: ViewRepo):
     def insert_view(view_data: Mapping[str, Any], current_user_data: Mapping[str, Any]) -> Optional[Mapping[str, Any]]:
         current_user = User.parse_obj(current_user_data)
         view = ViewData.parse_obj(view_data) 
+        if view.user_id is None or view.user_id == '':
+            view.user_id = current_user.id
         view.created_by = current_user.id
         new_view = view_service.insert(view)
         return None if new_view is None else new_view.dict()

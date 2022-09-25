@@ -116,4 +116,4 @@ if enable_content_module:
         register_content_event_handler(mb)
     # serve RPC
     if enable_rpc_handler:
-        register_content_rpc_handler(rpc, content_repo, view_repo)
+        register_content_rpc_handler(rpc, mb, content_repo, view_repo)

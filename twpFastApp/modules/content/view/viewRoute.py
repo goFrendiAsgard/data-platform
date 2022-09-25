@@ -22,6 +22,8 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
     def find_views(keyword: str='', limit: int=100, offset: int=0, current_user:  User = Depends(auth_service.is_authorized('api:view:read'))) -> ViewResult:
         result = {}
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             result = rpc.call('find_view', keyword, limit, offset)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -33,6 +35,8 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
     def find_view_by_id(id: str, current_user:  User = Depends(auth_service.is_authorized('api:view:read'))) -> View:
         view = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             view = rpc.call('find_view_by_id', id)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -43,9 +47,11 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
 
 
     @app.post('/api/v1/views/', response_model=View)
-    def insert_view(view_data: ViewData, current_user:  User = Depends(auth_service.is_authorized('api:view:create'))) -> View:
+    def insert_view(view_data: ViewData, current_user:  User = Depends(auth_service.everyone())) -> View:
         view = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             view = rpc.call('insert_view', view_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -59,6 +65,8 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
     def update_view(id: str, view_data: ViewData, current_user:  User = Depends(auth_service.is_authorized('api:view:update'))) -> View:
         view = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             view = rpc.call('update_view', id, view_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -72,6 +80,8 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
     def delete_view(id: str, current_user:  User = Depends(auth_service.is_authorized('api:view:delete'))) -> View:
         view = None
         try:
+            if not current_user:
+                current_user = rpc.call('get_guest_user')
             view = rpc.call('delete_view', id, current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
