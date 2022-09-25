@@ -1,4 +1,5 @@
 from repos import Base
+from modules.content.view.repos.dbViewRepo import DBViewRepo
 from modules.content.content.repos.dbContentRepo import DBContentRepo
 from modules.auth import DBRoleRepo
 from modules.auth import DBUserRepo

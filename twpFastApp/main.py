@@ -1,3 +1,4 @@
+from modules.content.view.repos.dbViewRepo import DBViewRepo
 from modules.content.content.repos.dbContentRepo import DBContentRepo
 from modules.content import (
     register_content_api_route, register_content_ui_route, register_content_event_handler, register_content_rpc_handler
@@ -102,6 +103,7 @@ if enable_auth_module:
 ################################################
 enable_content_module = os.getenv('APP_ENABLE_CONTENT_MODULE', '1') != '0'
 if enable_content_module:
+    view_repo = DBViewRepo(engine=engine, create_all=db_create_all)
     content_repo = DBContentRepo(engine=engine, create_all=db_create_all)
     # API route
     if enable_route_handler and enable_api:
@@ -114,4 +116,4 @@ if enable_content_module:
         register_content_event_handler(mb)
     # serve RPC
     if enable_rpc_handler:
-        register_content_rpc_handler(rpc, content_repo)
+        register_content_rpc_handler(rpc, content_repo, view_repo)
