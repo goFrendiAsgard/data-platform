@@ -13,6 +13,6 @@ configs:
     afterCheck: sleep 5
     checkCommand: |
       echo "check twpMaterialize"
-    command : |
-
+    command : ''
     volumes: |
+      mzdata:/mzdata

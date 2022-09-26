@@ -58,6 +58,7 @@ services:
       - POSTGRES_USER=${DATABASE_USER}
     volumes:
       - ${DOCKER_COMPOSE_VOLUME:-./volumes}/db:/var/lib/postgresql/data
+      - ./initdb.d:/docker-entrypoint-initdb.d
 
   scheduler:
     build: ./scheduler
