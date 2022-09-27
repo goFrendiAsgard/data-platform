@@ -1,1 +1,1 @@
-FROM airbyte/webapp:0.40.9
+FROM airbyte/webapp:0.35.60-alpha

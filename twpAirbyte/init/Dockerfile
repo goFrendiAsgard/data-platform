@@ -1,1 +1,1 @@
-FROM airbyte/init:0.40.9
+FROM airbyte/init:0.35.60-alpha

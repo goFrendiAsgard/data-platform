@@ -1,1 +1,1 @@
-FROM airbyte/server:0.40.9
+FROM airbyte/server:0.35.60-alpha

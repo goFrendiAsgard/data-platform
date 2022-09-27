@@ -116,7 +116,7 @@ envs:
       default: segment
       from: TWP_AIRBYTE_TRACKING_STRATEGY
     VERSION:
-      default: 0.40.9
+      default: 0.35.60-alpha
       from: TWP_AIRBYTE_VERSION
     WEB_PORT:
       default: "8020"
