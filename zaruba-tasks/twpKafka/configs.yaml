@@ -7,10 +7,16 @@ configs:
       {{ .GetEnv "KAFKA_JMX_PORT" }}
       {{ .GetEnv "KAFKA_LISTENER_PORT" }}
       {{ .GetEnv "SCHEMA_REGISTRY_PORT" }}
-      {{ .GetEnv "CONNECT_PORT" }}
       {{ .GetEnv "CONTROL_PORT" }}
-      {{ .GetEnv "KSQL_DB_PORT" }}
-      {{ .GetEnv "REST_PROXY" }}
+    # ports: |
+    #   {{ .GetEnv "ZOOKEEPER_PORT" }}
+    #   {{ .GetEnv "KAFKA_JMX_PORT" }}
+    #   {{ .GetEnv "KAFKA_LISTENER_PORT" }}
+    #   {{ .GetEnv "SCHEMA_REGISTRY_PORT" }}
+    #   {{ .GetEnv "CONNECT_PORT" }}
+    #   {{ .GetEnv "CONTROL_PORT" }}
+    #   {{ .GetEnv "KSQL_DB_PORT" }}
+    #   {{ .GetEnv "REST_PROXY" }}
     afterCheck: sleep 5
     checkCommand: |
       echo "check twpKafka"

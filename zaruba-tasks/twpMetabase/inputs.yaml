@@ -1,0 +1,8 @@
+inputs:
+
+  runTwpMetabaseInLocal:
+    default: true
+    options: [true, false]
+    allowCustom: false
+    description: Whether to run twpMetabase locally
+    prompt: Run twpMetabase locally?

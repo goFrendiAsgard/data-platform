@@ -1,0 +1,11 @@
+tasks:
+
+  startTwpMetabase:
+    icon: Ⓜ️
+    dependencies:
+      - startTwpMetabaseContainer
+
+  stopTwpMetabase:
+    icon: ✋
+    dependencies:
+      - stopTwpMetabaseContainer

@@ -39,6 +39,7 @@ services:
       - DATABASE_USER=${DATABASE_USER}
       - LOG_LEVEL=${LOG_LEVEL}
       - RUN_DATABASE_MIGRATION_ON_STARTUP=${RUN_DATABASE_MIGRATION_ON_STARTUP}
+      - JAVA_TOOL_OPTIONS=-Xmx120M
 
   db:
     build: ./db
@@ -96,6 +97,7 @@ services:
       - WORKER_ENVIRONMENT=${WORKER_ENVIRONMENT}
       - WORKSPACE_DOCKER_MOUNT=${WORKSPACE_DOCKER_MOUNT}
       - WORKSPACE_ROOT=${WORKSPACE_ROOT}
+      - JAVA_TOOL_OPTIONS=-Xmx120M
     volumes:
       - data:${CONFIG_ROOT}
       - workspace:${WORKSPACE_ROOT}
@@ -138,6 +140,7 @@ services:
       - WORKER_ENVIRONMENT=${WORKER_ENVIRONMENT}
       - WORKSPACE_DOCKER_MOUNT=${WORKSPACE_DOCKER_MOUNT}
       - WORKSPACE_ROOT=${WORKSPACE_ROOT}
+      - JAVA_TOOL_OPTIONS=-Xmx120M
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - workspace:${WORKSPACE_ROOT}
@@ -174,6 +177,7 @@ services:
       - WEBAPP_URL=${WEBAPP_URL}
       - WORKER_ENVIRONMENT=${WORKER_ENVIRONMENT}
       - WORKSPACE_ROOT=${WORKSPACE_ROOT}
+      - JAVA_TOOL_OPTIONS=-Xmx120M
     ports:
       - ${SERVER_PORT:-8001}:8001
     volumes:
@@ -200,6 +204,7 @@ services:
       - OPENREPLAY=${OPENREPLAY:-}
       - PAPERCUPS_STORYTIME=${PAPERCUPS_STORYTIME:-}
       - TRACKING_STRATEGY=${TRACKING_STRATEGY}
+      - JAVA_TOOL_OPTIONS=-Xmx120M
 
   airbyte-temporal:
     build: ./temporal
@@ -218,6 +223,7 @@ services:
       - POSTGRES_PWD=${DATABASE_PASSWORD}
       - POSTGRES_SEEDS=${DATABASE_HOST}
       - POSTGRES_USER=${DATABASE_USER}
+      - JAVA_TOOL_OPTIONS=-Xmx120M
     volumes:
       - ./temporal/dynamicconfig:/etc/temporal/config/dynamicconfig
 

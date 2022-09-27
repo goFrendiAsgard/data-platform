@@ -10,7 +10,8 @@ configs:
     imageName: twp-mysql
     containerName: twpMysql
     localhost: host.docker.internal
-    afterCheck: sleep 10
+    afterCheck: sleep 5
+    shmSize: 1gb
     checkCommand: |
       mysqladmin ping -u "root" -p{{ .GetEnv "MYSQL_ROOT_PASSWORD" }}
     command : |

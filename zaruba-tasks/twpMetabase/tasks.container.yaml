@@ -1,0 +1,47 @@
+tasks:
+
+  startTwpMetabaseContainer:
+    icon: Ⓜ️
+    extend: zrbStartDockerCompose
+    location: ../../twpMetabase
+    inputs:
+      - runTwpMetabaseInLocal
+    configRefs:
+      - twpMetabase
+      - twpMetabaseImage
+    envRefs: 
+      - twpMetabase
+  
+  buildTwpMetabaseImage:
+    icon: 🏭
+    extend: zrbBuildDockerCompose
+    location: ../../twpMetabase
+    configRefs: 
+      - twpMetabaseImage
+    envRefs: 
+      - twpMetabase
+
+  pushTwpMetabaseImage:
+    icon: 📤
+    extend: zrbPushDockerCompose
+    location: ../../twpMetabase
+    dependencies:
+      - buildTwpMetabaseImage
+    configRefs: 
+      - twpMetabaseImage
+    envRefs: 
+      - twpMetabase
+
+  stopTwpMetabaseContainer:
+    icon: ✋
+    extend: zrbStopDockerCompose
+    location: ../../twpMetabase
+    envRefs: 
+      - twpMetabase
+
+  removeTwpMetabaseContainer:
+    icon: ❌
+    extend: zrbRemoveDockerCompose
+    location: ../../twpMetabase
+    envRefs: 
+      - twpMetabase

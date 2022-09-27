@@ -1,0 +1,13 @@
+configs:
+
+  twpMetabase:
+    runInLocal: '{{ .GetValue "runTwpMetabaseInLocal" }}'
+    ports: |
+      {{ .GetEnv "MB_PORT" }}
+    afterCheck: sleep 5
+    checkCommand: |
+      echo "check twpMetabase"
+
+  twpMetabaseImage:
+    useImagePrefix: true
+    imageName: twp-metabase

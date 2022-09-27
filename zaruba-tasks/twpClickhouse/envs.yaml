@@ -13,3 +13,5 @@ envs:
     CLICKHOUSE_USER:
       default: root
       from: TWP_CLICKHOUSE_CLICKHOUSE_USER
+    JAVA_TOOL_OPTIONS:
+      default: -Xmx120M

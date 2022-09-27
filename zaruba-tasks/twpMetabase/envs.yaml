@@ -1,0 +1,30 @@
+envs:
+
+  twpMetabase:
+    DB_NAME:
+      default: metabase
+      from: TWP_METABASE_DB_NAME
+    DB_PASSWORD:
+      default: Alch3mist
+      from: TWP_METABASE_DB_PASSWORD
+    DB_PORT:
+      default: "5432"
+      from: TWP_METABASE_DB_PORT
+    DB_ROOT_PASSWORD:
+      default: Alch3mist
+      from: TWP_METABASE_DB_ROOT_PASSWORD
+    DB_TYPE:
+      default: postgres
+      from: TWP_METABASE_DB_TYPE
+    DB_USER:
+      default: postgres
+      from: TWP_METABASE_DB_USER
+    MB_DB_FILE:
+      default: /metabase-data/metabase.db
+      from: TWP_METABASE_MB_DB_FILE
+    MB_JAVA_TIMEZONE:
+      default: Asia/Jakarta
+      from: TWP_METABASE_MB_JAVA_TIMEZONE
+    MB_PORT:
+      default: "3001"
+      from: TWP_METABASE_MB_PORT
