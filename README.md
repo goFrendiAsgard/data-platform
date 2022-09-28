@@ -29,3 +29,22 @@ Pada repositori ini ada beberapa komponen yang umum dipakai dalam data engineeri
     - Port: 5432
 - Analytics Dashboard: Metabase
     - Port: [3001](http://localhost:3001)
+    - User: gofrendiasgard@gmail.com
+    - Password: Alch3mist
+
+
+# Airbyte connection ID
+
+Saat membuka salah satu connection di airbyte, kita akan menemukan URL seperti berikut:
+
+```
+http://localhost:8020/workspaces/ded7dd9d-62e2-4d54-b7ff-a4fe51834b20/connections/290db93e-2786-4f50-ae71-35f8ff7ad6b4/status
+```
+
+Dalam hal ini, connection ID dari connection tersebut adalah `290db93e-2786-4f50-ae71-35f8ff7ad6b4`
+
+# Register TWP Prefect flows
+
+```bash
+zaruba please registerTwpPrefectFlow
+```
