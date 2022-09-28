@@ -33,7 +33,7 @@ tasks:
     icon: 🏁
     extend: zrbWrapper
     dependencies:
-      - startTwpClickhouse
+      # - startTwpClickhouse
       - startTwpAirbyte
       - startTwpPrefect
       - startTwpKafka
@@ -58,7 +58,7 @@ tasks:
     icon: 🐳
     extend: zrbWrapper
     dependencies:
-      - startTwpClickhouseContainer
+      # - startTwpClickhouseContainer
       - startTwpAirbyteContainer
       - startTwpPrefectContainer
       - startTwpKafkaContainer

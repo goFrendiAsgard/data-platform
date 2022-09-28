@@ -63,6 +63,7 @@ prefect==2.3.2
 prefect-airbyte==0.1.2
 prefect-dbt==0.2.2
 prefect-shell==0.1.1
+prefect-sqlalchemy==0.2.0
 psycopg2-binary==2.9.3
 pyasn1==0.4.8
 pyasn1-modules==0.2.8

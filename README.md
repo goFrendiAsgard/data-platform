@@ -53,7 +53,8 @@ zaruba please registerTwpPrefectFlow
 
 ```bash
 cd twpPrefect/deployments
-pip install dbt-postgre
+source venv/bin/activate
+pip install dbt-postgres
 cd flows
 dbt init dbt_sample
 ```
@@ -61,6 +62,10 @@ dbt init dbt_sample
 # Run DBT locally
 
 ```bash
-source .env
+cd twpPrefect/deployments
+source venv/bin/activate
+cd flows/dbt_sample
+source dbt.env
+dbt deps
 dbt run && dbt test
 ```
