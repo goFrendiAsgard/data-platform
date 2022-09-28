@@ -7,7 +7,8 @@ Pada repositori ini ada beberapa komponen yang umum dipakai dalam data engineeri
 - OLTP: MySQL
     - Port 3306
 - Messaging/Event Streaming: Kafka
-    - Port 9092
+    - Port 9092 (from localhost)
+    - Port 39092 (from other container)
     - Port 2181 (zookeeper)
     - Port 9101 (JMX)
     - Port 8083 (kafka connect, not used)
@@ -68,4 +69,51 @@ cd flows/dbt_sample
 source dbt.env
 dbt deps
 dbt run && dbt test
+```
+
+# Materialize
+
+```sql
+CREATE SOURCE view_json_source
+FROM KAFKA BROKER 'host.docker.internal:39092' TOPIC 'view_content' WITH (client_id='id_coba', group_id_prefix='group_coba')
+FORMAT BYTES;
+  
+CREATE VIEW raw_view_content AS
+  SELECT
+    (data->>'session_id')::varchar AS session_id
+    , (data->>'content_id')::varchar AS content_id
+    , (data->>'user_id')::varchar AS user_id
+    , (data->>'created_at') AS created_at
+  FROM (SELECT CONVERT_FROM(data, 'utf8')::jsonb AS data FROM view_json_source);
+
+CREATE MATERIALIZED VIEW view_content AS
+  SELECT *
+  FROM raw_view_content;
+
+SELECT * FROM view_content;
+
+SELECT
+	view_content.*
+	, view_content.created_at::timestamp
+	, mz_logical_timestamp()
+	, to_timestamp(mz_logical_timestamp()/1000)  at time zone 'UTC' + interval '-20 seconds' as twenty_seconds_ago 
+FROM view_content;
+
+
+CREATE VIEW current_view_content AS
+    SELECT 
+        count(distinct session_id) global_view_count
+        , content_id
+    FROM view_content
+    WHERE view_content.created_at::timestamp > to_timestamp(mz_logical_timestamp()/1000)  at time zone 'UTC' + interval '-1 days'
+    GROUP BY content_id;
+
+SELECT * FROM current_view_content;
+		
+
+--drop view view_content;
+--drop view raw_view_content;
+--drop source view_json_source;
+--
+--show sources;
 ```
