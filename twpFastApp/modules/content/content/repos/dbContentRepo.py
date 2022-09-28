@@ -81,7 +81,9 @@ class DBContentRepo(ContentRepo):
                 url=content_data.url,
                 description=content_data.description,
                 created_at=datetime.datetime.utcnow(),
-                created_by=content_data.created_by
+                created_by=content_data.created_by,
+                updated_at=datetime.datetime.utcnow(),
+                updated_by=content_data.updated_by
             )
             db.add(db_content)
             db.commit()

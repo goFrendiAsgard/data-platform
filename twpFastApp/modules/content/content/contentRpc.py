@@ -24,6 +24,7 @@ def register_content_entity_rpc(rpc: RPC, content_repo: ContentRepo):
         current_user = User.parse_obj(current_user_data)
         content = ContentData.parse_obj(content_data) 
         content.created_by = current_user.id
+        content.updated_by = current_user.id
         new_content = content_service.insert(content)
         return None if new_content is None else new_content.dict()
 

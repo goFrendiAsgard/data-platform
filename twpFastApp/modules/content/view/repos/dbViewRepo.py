@@ -81,7 +81,9 @@ class DBViewRepo(ViewRepo):
                 session_id=view_data.session_id,
                 user_id=view_data.user_id,
                 created_at=datetime.datetime.utcnow(),
-                created_by=view_data.created_by
+                created_by=view_data.created_by,
+                updated_at=datetime.datetime.utcnow(),
+                updated_by=view_data.updated_by
             )
             db.add(db_view)
             db.commit()

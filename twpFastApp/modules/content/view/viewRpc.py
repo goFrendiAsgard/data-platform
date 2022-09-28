@@ -26,6 +26,7 @@ def register_view_entity_rpc(rpc: RPC, mb: MessageBus, view_repo: ViewRepo):
         if view.user_id is None or view.user_id == '':
             view.user_id = current_user.id
         view.created_by = current_user.id
+        view.updated_by = current_user.id
         new_view = view_service.insert(view)
         return None if new_view is None else new_view.dict()
 

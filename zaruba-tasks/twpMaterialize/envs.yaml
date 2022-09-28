@@ -1,5 +1,3 @@
 envs:
 
-  twpMaterialize:
-    JAVA_TOOL_OPTIONS:
-      default: -Xmx120M
+  twpMaterialize: {}

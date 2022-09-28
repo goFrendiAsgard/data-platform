@@ -38,7 +38,7 @@ tasks:
       - startTwpPrefect
       - startTwpKafka
       - startTwpMysql
-      # - startTwpMaterialize
+      - startTwpMaterialize
       - startTwpFastApp
       - startTwpMetabase
 
@@ -62,7 +62,7 @@ tasks:
       - startTwpPrefectContainer
       - startTwpKafkaContainer
       - startTwpMysqlContainer
-      # - startTwpMaterializeContainer
+      - startTwpMaterializeContainer
       - startTwpFastAppContainer
       - startTwpMetabaseContainer
 
