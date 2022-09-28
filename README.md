@@ -48,3 +48,19 @@ Dalam hal ini, connection ID dari connection tersebut adalah `290db93e-2786-4f50
 ```bash
 zaruba please registerTwpPrefectFlow
 ```
+
+# Create DBT project
+
+```bash
+cd twpPrefect/deployments
+pip install dbt-postgre
+cd flows
+dbt init dbt_sample
+```
+
+# Run DBT locally
+
+```bash
+source .env
+dbt run && dbt test
+```
