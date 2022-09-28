@@ -1,0 +1,18 @@
+configs:
+
+  twpPostgresql:
+    runInLocal: '{{ .GetValue "runTwpPostgresqlInLocal" }}'
+    ports: |
+      5432
+
+  twpPostgresqlContainer:
+    useImagePrefix: true
+    imageName: twp-postgresql
+    containerName: twpPostgresql
+    localhost: host.docker.internal
+    afterCheck: sleep 5
+    checkCommand: |
+      pg_isready -U "{{ .GetEnv "POSTGRESQL_USERNAME" }}"
+    command : |
+
+    volumes: |

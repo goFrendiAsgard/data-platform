@@ -1,0 +1,12 @@
+envs:
+
+  twpPostgresql:
+    POSTGRESQL_DATABASE:
+      default: sample
+      from: TWP_POSTGRESQL_POSTGRESQL_DATABASE
+    POSTGRESQL_PASSWORD:
+      default: Alch3mist
+      from: TWP_POSTGRESQL_POSTGRESQL_PASSWORD
+    POSTGRESQL_USERNAME:
+      default: postgres
+      from: TWP_POSTGRESQL_POSTGRESQL_USERNAME

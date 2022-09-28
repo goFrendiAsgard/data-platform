@@ -22,8 +22,10 @@ Pada repositori ini ada beberapa komponen yang umum dipakai dalam data engineeri
     - Port 7233 (Temporal)
 - Streaming: Materialize
     - Port: 6875
-- OLAP/Data warehouse: ClickHouse
+- OLAP/Data warehouse: ClickHouse (Currently failed to connect to Metabase, not used, see [this issue](https://github.com/enqueue/metabase-clickhouse-driver/issues/101))
     - Port: 9000
     - Port: [8123](http://localhost:8123/play) (UI)
+- OLAP/Data warehouse: Postgresql
+    - Port: 5432
 - Analytics Dashboard: Metabase
     - Port: [3001](http://localhost:3001)

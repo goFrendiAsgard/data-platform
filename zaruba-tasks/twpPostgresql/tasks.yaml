@@ -1,0 +1,11 @@
+tasks:
+
+  startTwpPostgresql:
+    icon: 🐘
+    dependencies:
+      - startTwpPostgresqlContainer
+
+  stopTwpPostgresql:
+    icon: ✋
+    dependencies:
+      - stopTwpPostgresqlContainer

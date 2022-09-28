@@ -1,0 +1,8 @@
+inputs:
+
+  runTwpPostgresqlInLocal:
+    default: true
+    options: [true, false]
+    allowCustom: false
+    description: Whether to run twpPostgresql locally
+    prompt: Run twpPostgresql locally?

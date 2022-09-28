@@ -1,0 +1,55 @@
+tasks:
+
+  startTwpPostgresqlContainer:
+    icon: 🐘
+    extend: zrbStartDockerContainer
+    location: ../../twpPostgresql
+    inputs:
+      - runTwpPostgresqlInLocal
+    dependencies:
+      - buildTwpPostgresqlImage
+    configRefs:
+      - twpPostgresqlContainer
+      - twpPostgresql
+    envRefs: 
+      - twpPostgresql
+
+  buildTwpPostgresqlImage:
+    icon: 🏭
+    extend: zrbBuildDockerImage
+    location: ../../twpPostgresql
+    configRefs:
+      - twpPostgresqlContainer
+      - twpPostgresql
+    envRefs: 
+      - twpPostgresql
+
+  pushTwpPostgresqlImage:
+    icon: 📤
+    extend: zrbPushDockerImage
+    dependencies:
+      - buildTwpPostgresqlImage
+    configRefs:
+      - twpPostgresqlContainer
+      - twpPostgresql
+    envRefs: 
+      - twpPostgresql
+
+  stopTwpPostgresqlContainer:
+    icon: ✋
+    extend: zrbStopDockerContainer
+    configRefs:
+      - twpPostgresqlContainer
+      - twpPostgresql
+    envRefs: 
+      - twpPostgresql
+
+  removeTwpPostgresqlContainer:
+    icon: ❌
+    extend: zrbRemoveDockerContainer
+    location: ../../twpPostgresql
+    configRefs:
+      - twpPostgresqlContainer
+      - twpPostgresql
+    envRefs: 
+      - twpPostgresql

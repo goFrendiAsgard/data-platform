@@ -1,0 +1,17 @@
+tasks:
+
+  queryTwpPostgresql:
+    icon: 📜
+    extend: zrbRunInDockerContainer
+    location: ../../twpPostgresql
+    dependencies:
+      - startTwpPostgresqlContainer
+    syncEnv: false
+    configRef: twpPostgresqlContainer
+    envRef: twpPostgresql
+    inputs:
+      - sql
+    configs:
+      templateLocation: '{{ .GetProjectPath "zaruba-tasks/twpPostgresql/queryTemplate" }}'
+    maxStartRetry: 5
+    startRetryDelay: 10s
