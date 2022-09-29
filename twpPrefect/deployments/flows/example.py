@@ -8,18 +8,6 @@ from prefect_dbt.cli import DbtCliProfile
 from prefect_dbt.cli.configs import PostgresTargetConfigs
 from prefect_sqlalchemy import DatabaseCredentials, SyncDriver
 
-@task
-def say_hello(name):
-    logger = get_run_logger()
-    hello = f"hello {name}"
-    print(hello)
-    logger.info(hello)
-
-
-@task
-def get_arguments(**kwargs):
-    return kwargs
-
 
 @flow(name="main flow")
 def main():

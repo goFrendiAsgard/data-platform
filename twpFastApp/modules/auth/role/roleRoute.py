@@ -22,6 +22,8 @@ def register_role_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def find_roles(keyword: str='', limit: int=100, offset: int=0, current_user: User = Depends(auth_service.is_authorized('api:role:read'))) -> RoleResult:
         result = {}
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('find_roles', keyword, limit, offset)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -33,6 +35,8 @@ def register_role_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def find_role_by_id(id: str, current_user: User = Depends(auth_service.is_authorized('api:role:read'))) -> Role:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('find_role_by_id', id)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -46,6 +50,8 @@ def register_role_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def insert_role(role_data: RoleData, current_user: User = Depends(auth_service.is_authorized('api:role:create'))) -> Role:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('insert_role', role_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -59,6 +65,8 @@ def register_role_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def update_role(id: str, role_data: RoleData, current_user: User = Depends(auth_service.is_authorized('api:role:update'))) -> Role:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('update_role', id, role_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -72,6 +80,8 @@ def register_role_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def delete_role(id: str, current_user: User = Depends(auth_service.is_authorized('api:role:delete'))) -> Role:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('delete_role', id, current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 

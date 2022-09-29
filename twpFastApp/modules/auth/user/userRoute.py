@@ -21,6 +21,8 @@ def register_user_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def find_user(keyword: str='', limit: int=100, offset: int=0, current_user: User = Depends(auth_service.is_authorized('api:user:read'))) -> UserResult:
         result = {}
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('find_users', keyword, limit, offset)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -31,6 +33,8 @@ def register_user_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def find_user_by_id(id: str, current_user: User = Depends(auth_service.is_authorized('api:user:read'))) -> User:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('find_user_by_id', id)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -43,6 +47,8 @@ def register_user_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def insert_user(data: UserData, current_user: User = Depends(auth_service.is_authorized('api:user:create'))) -> User:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('insert_user', data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -55,6 +61,8 @@ def register_user_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def update_user(id: str, data: UserData, current_user: User = Depends(auth_service.is_authorized('api:user:update'))) -> User:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('update_user', id, data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -67,6 +75,8 @@ def register_user_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_service
     def delete_user(id: str, current_user: User = Depends(auth_service.is_authorized('api:user:delete'))) -> User:
         result = None
         try:
+            if not current_user:
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('delete_user', id, current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 

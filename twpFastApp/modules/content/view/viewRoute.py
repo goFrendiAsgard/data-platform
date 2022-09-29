@@ -23,7 +23,7 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
         result = {}
         try:
             if not current_user:
-                current_user = rpc.call('get_guest_user')
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             result = rpc.call('find_view', keyword, limit, offset)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -36,7 +36,7 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
         view = None
         try:
             if not current_user:
-                current_user = rpc.call('get_guest_user')
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             view = rpc.call('find_view_by_id', id)
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -51,7 +51,7 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
         view = None
         try:
             if not current_user:
-                current_user = rpc.call('get_guest_user')
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             view = rpc.call('insert_view', view_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -66,7 +66,7 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
         view = None
         try:
             if not current_user:
-                current_user = rpc.call('get_guest_user')
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             view = rpc.call('update_view', id, view_data.dict(), current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
@@ -81,7 +81,7 @@ def register_view_entity_api_route(app: FastAPI, mb: MessageBus, rpc: RPC, auth_
         view = None
         try:
             if not current_user:
-                current_user = rpc.call('get_guest_user')
+                current_user = User.parse_obj(rpc.call('get_guest_user'))
             view = rpc.call('delete_view', id, current_user.dict())
         except:
             print(traceback.format_exc(), file=sys.stderr) 
